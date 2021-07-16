@@ -1,7 +1,7 @@
 {
   "name": "gittin",
   "version": "1.0.0",
-  "main": "./dist/",
+  "main": "./src/",
   "repository": "https://github.com/joaocasarin/gittin.git",
   "author": "Joao Casarin <joaovitorcasarin@hotmail.com>",
   "license": "MIT",
@@ -9,8 +9,6 @@
     "dev": "ts-node-dev --respawn ./src",
     "test": "jest",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "tsc": "tsc",
-    "prestart": "yarn tsc",
     "start": "node ."
   },
   "dependencies": {
