@@ -9,7 +9,8 @@
     "dev": "ts-node-dev --respawn ./src",
     "test": "jest",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "prestart": "tsc",
+    "tsc": "tsc",
+    "prestart": "yarn tsc",
     "start": "node ."
   },
   "dependencies": {
