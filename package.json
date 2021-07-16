@@ -1,15 +1,14 @@
 {
   "name": "gittin",
   "version": "1.0.0",
-  "main": "./src/",
+  "main": "./dist/",
   "repository": "https://github.com/joaocasarin/gittin.git",
   "author": "Joao Casarin <joaovitorcasarin@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn ./src",
+    "start": "ts-node-dev --respawn ./src",
     "test": "jest",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "start": "node ."
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
