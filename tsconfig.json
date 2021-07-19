@@ -73,7 +73,6 @@
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
     "jest.config.ts",
-    "teste.js",
     "ormconfig.js",
     "node_modules"
   ]

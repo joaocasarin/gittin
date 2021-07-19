@@ -6,9 +6,11 @@
   "author": "Joao Casarin <joaovitorcasarin@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn ./src",
+    "dev": "ts-node-dev ./src",
     "test": "jest",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "migration:run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run",
+    "migration:create": "ts-node-dev ./node_modules/typeorm/cli.js migration:create",
+    "entity:create": "ts-node-dev ./node_modules/typeorm/cli.js entity:create",
     "tsc": "tsc",
     "postinstall": "yarn tsc",
     "start": "node ."
