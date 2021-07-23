@@ -12,7 +12,7 @@
     "migration:create": "ts-node-dev ./node_modules/typeorm/cli.js migration:create",
     "entity:create": "ts-node-dev ./node_modules/typeorm/cli.js entity:create",
     "tsc": "tsc",
-    "prestart": "yarn tsc",
+    "build": "yarn tsc",
     "start": "node ."
   },
   "dependencies": {
