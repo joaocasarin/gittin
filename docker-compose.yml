@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+    web:
+        container_name: web-prod
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        depends_on: 
+            - db
+        ports:
+            - ${PORT}:${PORT}
+        environment: 
+            DATABASE_URL: ${DATABASE_URL}
+            NODE_ENV: ${NODE_ENV}
+            PORT: ${PORT}
+    db:
+        container_name: db-prod
+        image: postgres:13.3-alpine
+        restart: always
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: docker
+            POSTGRES_DB: gittin
+        ports: 
+            - 5432:5432
+        volumes: 
+            - ./postgres-prod:/var/lib/postgresql/data
+    pgadmin:
+        container_name: pgadmin-prod
+        image: dpage/pgadmin4:5.5
+        restart: always
+        environment: 
+            PGADMIN_DEFAULT_EMAIL: db@db.com
+            PGADMIN_DEFAULT_PASSWORD: docker
+            PGADMIN_PORT: 80
+        ports: 
+            - 8080:80
+        volumes:
+            - pgadmin-data-prod:/var/lib/pgadmin
+        depends_on: 
+            - db
+volumes:
+    db-data:
+    pgadmin-data-prod:

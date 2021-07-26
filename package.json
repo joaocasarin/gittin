@@ -6,13 +6,15 @@
   "author": "Joao Casarin <joaovitorcasarin@hotmail.com>",
   "license": "MIT",
   "scripts": {
+    "docker:dev": "docker-compose -f ./docker-compose.dev.yml up --build -d",
+    "docker:prod": "docker-compose -f ./docker-compose.yml up --build -d",
+    "docker:clear": "docker-compose down",
     "dev": "ts-node-dev ./src/index.ts",
     "test": "jest",
     "migration:run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run",
     "migration:create": "ts-node-dev ./node_modules/typeorm/cli.js migration:create",
     "entity:create": "ts-node-dev ./node_modules/typeorm/cli.js entity:create",
-    "tsc": "tsc",
-    "build": "yarn tsc",
+    "build": "tsc",
     "start": "node ."
   },
   "dependencies": {
