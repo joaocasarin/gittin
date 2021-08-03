@@ -12,7 +12,6 @@ services:
             - ${PORT}:${PORT}
         environment: 
             DATABASE_URL: ${DATABASE_URL}
-            NODE_ENV: ${NODE_ENV}
             PORT: ${PORT}
     db:
         container_name: db-prod
@@ -25,7 +24,7 @@ services:
         ports: 
             - 5432:5432
         volumes: 
-            - ./postgres-prod:/var/lib/postgresql/data
+            - postgres-prod:/var/lib/postgresql/data
     pgadmin:
         container_name: pgadmin-prod
         image: dpage/pgadmin4:5.5
@@ -41,5 +40,5 @@ services:
         depends_on: 
             - db
 volumes:
-    db-data:
+    postgres-prod:
     pgadmin-data-prod:
