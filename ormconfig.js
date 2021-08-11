@@ -6,8 +6,13 @@ module.exports = {
 
     "url": process.env.DATABASE_URL,
     
-    "entities": ["dist/entities/*.js"], // typeorm loads entities from this directory
-    "migrations": ["dist/database/migrations/*.js"], // typeorm loads migrations from the directory
+    "entities": process.env.NODE_ENV === "production" ? 
+            ["dist/entities/*.js"] : 
+            ["src/entities/*.ts"], // typeorm loads entities from this directory
+
+    "migrations": process.env.NODE_ENV === "production" ? 
+            ["dist/database/migrations/*.js"] : 
+            ["src/database/migrations/*.ts"], // typeorm loads migrations from the directory
 
     "dropSchema": process.env.NODE_ENV === 'test' ? true : false,
     "migrationsRun": process.env.NODE_ENV !== 'production' ? true : false,

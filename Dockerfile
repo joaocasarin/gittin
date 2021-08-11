@@ -2,7 +2,7 @@ FROM node:14-alpine as base
 ARG PORT
 ARG DATABASE_URL
 WORKDIR /usr/app
-COPY package.json yarn.lock jest.config.ts tsconfig.json ormconfig.js ./
+COPY package.json yarn.lock tsconfig.json ormconfig.js ./
 COPY src ./src
 
 # used for waiting while database container is running to continue with node stuffs
@@ -16,7 +16,7 @@ WORKDIR /usr/app
 ENV NODE_ENV=production
 ENV DATABASE_URL=${DATABASE_URL}
 ENV PORT=${PORT}
-COPY --from=base /usr/app/dist ./
+RUN rm -rf /usr/app/src
 CMD /wait && yarn start
 
 EXPOSE ${PORT}
