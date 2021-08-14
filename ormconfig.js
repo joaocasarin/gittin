@@ -14,7 +14,7 @@ module.exports = {
             ["dist/database/migrations/*.js"] : 
             ["src/database/migrations/*.ts"], // typeorm loads migrations from the directory
 
-    "dropSchema": process.env.NODE_ENV === 'test' ? true : false,
+    "dropSchema": process.env.NODE_ENV === 'test' ? false : false,
     "migrationsRun": process.env.NODE_ENV !== 'production' ? true : false,
 
     "cli": {
