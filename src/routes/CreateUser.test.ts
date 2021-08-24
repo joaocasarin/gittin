@@ -14,12 +14,15 @@ afterAll(async () => {
 
 describe('POST /api/user', () => {
     it('should return 200', async () => {
-        const response = await st(app).post('/api/users').send({
-            "name": "123",
+        const data = {
+            "name": "joao",
             "password": "123",
-            "email": "docker@123.com",
+            "email": "joao@123.com",
             "admin": true
-        });
-        expect(response.body).toContain('"admin": true');
+        };
+
+        const response = await st(app).post('/api/users').send(data);        
+
+        expect(response.body).toHaveProperty('created_at');
     });
 })
