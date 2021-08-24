@@ -1,7 +1,7 @@
 import { createConnection } from "typeorm";
-import { databaseConfigs } from "../configs/databaseConfigs";
+import { ormconfig } from "../configs/databaseConfigs";
 
-const connection = createConnection(databaseConfigs);
+const connection = createConnection(ormconfig);
 
 export {
     connection
