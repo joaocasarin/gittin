@@ -1,16 +1,22 @@
-import { ConnectionOptions } from "typeorm";
-import AllMigrations from "../database/migrations";
-import AllEntities from "../entities";
+import { ConnectionOptions, getConnectionOptions, createConnection } from "typeorm";
+import { CreateUsers1623957922252 } from "../database/migrations/1626667841903-CreateUsers";
+import User from "../entities/User";
 
-export const databaseConfigs = {
-    type: "postgres",
-    ssl: process.env.NODE_ENV === 'production'
-        && process.env.DATABASE_URL !== 'postgres://postgres:docker@localhost:5432/gittin'
-        && process.env.DATABASE_URL !== 'postgres://postgres:docker@db:5432/gittin' ? { rejectUnauthorized: false } : false,
-    url: process.env.DATABASE_URL,
-    entities: AllEntities,
-    migrations: AllMigrations,
-    dropSchema: process.env.NODE_ENV === 'test' ? false : false,
-    migrationsRun: process.env.NODE_ENV !== 'production' ? true : false
+let ormconfig: ConnectionOptions;
 
-} as ConnectionOptions;
+(async () => {
+    ormconfig = await getConnectionOptions();
+    
+    Object.assign(ormconfig, {
+        entities: [
+            User
+        ],
+        migrations: [
+            CreateUsers1623957922252
+        ]
+    });
+})();
+
+export {
+    ormconfig
+};
