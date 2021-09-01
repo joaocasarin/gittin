@@ -9,7 +9,6 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-    await connection.clear();
     await connection.close();
 });
 

@@ -14,10 +14,10 @@ const connection = {
         const connection = getConnection();
         const entities = connection.entityMetadatas;
 
-        entities.forEach(async (entity) => {
+        await Promise.all(entities.map(async (entity) => {
             const repository = connection.getRepository(entity.name);
-            await repository.query(`TRUNCATE ${entity.tableName}`);
-        });
+            await repository.query(`DELETE FROM ${entity.tableName} WHERE email = 'joao@123.com'`);
+        }));
     }
 };
 
