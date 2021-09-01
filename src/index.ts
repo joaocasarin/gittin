@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 (async () => {
     try {
-        (await connection).connect;
+        await connection.create();
         app.listen(port, () => {
             console.log(`Server running on port ${port}`);
         });

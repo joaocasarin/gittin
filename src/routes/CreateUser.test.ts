@@ -5,11 +5,16 @@ import { connection } from '../database';
 
 
 beforeAll(async () => {
-    (await connection).connect;
+    await connection.create();
 });
 
 afterAll(async () => {
-    (await connection).close;
+    await connection.clear();
+    await connection.close();
+});
+
+afterEach(async () => {
+    await connection.clear();
 });
 
 describe('POST /api/user', () => {
